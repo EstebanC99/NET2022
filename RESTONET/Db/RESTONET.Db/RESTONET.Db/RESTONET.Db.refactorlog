@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5e4bdae7-7687-415c-93cd-1b25eabd3c40" ChangeDateTime="03/23/2022 21:01:37">
+    <Property Name="ElementName" Value="[dbo].[t_Mesa].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_Mesa]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_Mesa" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8cb94c2a-1a70-4113-a3d7-312a17452ef2" ChangeDateTime="03/23/2022 21:02:41">
+    <Property Name="ElementName" Value="[dbo].[t_Mozo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_Mozo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_Mozo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e559d29-c79e-4958-9a68-97e965b2e574" ChangeDateTime="03/23/2022 21:05:00">
+    <Property Name="ElementName" Value="[dbo].[t_EstadoPedido].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_EstadoPedido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_EstadoPedido" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f32cc6a6-7647-465b-a4f8-2e773dca7afd" ChangeDateTime="03/23/2022 21:05:51">
+    <Property Name="ElementName" Value="[dbo].[t_TipoPlato].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_TipoPlato]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_TipoPlato" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="534decd3-accc-48e2-b4f4-51fca24c9de9" ChangeDateTime="03/23/2022 21:06:29">
+    <Property Name="ElementName" Value="[dbo].[t_Plato].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_Plato]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_Plato" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e502935f-683d-4d95-bd9d-77d7119fac53" ChangeDateTime="03/23/2022 21:11:45">
+    <Property Name="ElementName" Value="[dbo].[t_PrecioPlato].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_PrecioPlato]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_PrecioPlato" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d09f3c39-e1d2-4bf5-8c95-6a8ed164cd8a" ChangeDateTime="03/23/2022 21:14:42">
+    <Property Name="ElementName" Value="[dbo].[t_EstadoLineaDePedido].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_EstadoLineaDePedido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_EstadoLineaDePedido" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1db7ff5d-9619-4484-976a-5afca8356f8d" ChangeDateTime="03/23/2022 21:15:36">
+    <Property Name="ElementName" Value="[dbo].[t_LineaDePedido].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_LineaDePedido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_LineaDePedido" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="11dad2dc-6c83-4c9e-89f0-3cc46b47e46b" ChangeDateTime="03/23/2022 21:20:59">
+    <Property Name="ElementName" Value="[dbo].[t_Pedido].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[t_Pedido]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_Pedido" />
+  </Operation>
+</Operations>
