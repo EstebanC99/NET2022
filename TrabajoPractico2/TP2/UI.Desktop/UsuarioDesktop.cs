@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business.Logic;
 using Business.Entities;
+using Util;
 
 namespace UI.Desktop
 {
@@ -22,17 +23,21 @@ namespace UI.Desktop
         public UsuarioDesktop(ModoForm modo) : this()
         {
             this.Modo = modo;
+
+            this.SetearBoton();
         }
 
         public UsuarioDesktop(int usuarioID, ModoForm modo) : this()
         {
             this.Modo = modo;
 
+            this.SetearBoton();
+
             UsuarioLogic usuarioLogic = new UsuarioLogic();
 
             this.UsuarioActual = usuarioLogic.GetOne(usuarioID);
 
-            this.MapearADatos();
+            this.MapearDeDatos();
         }
 
         public Usuario UsuarioActual { get; set; }
@@ -46,21 +51,6 @@ namespace UI.Desktop
             this.txtUsuario.Text = this.UsuarioActual.NombreUsuario;
             this.txtClave.Text = this.UsuarioActual.Clave;
             this.chkHabilitado.Checked = this.UsuarioActual.Habilitado;
-
-            switch (this.Modo)
-            {
-                case ModoForm.Alta:
-                    this.btnAceptar.Text = "Guardar";
-                    break;
-                case ModoForm.Baja:
-                    this.btnAceptar.Text = "Eliminar";
-                    break;
-                case ModoForm.Consulta:
-                    this.btnAceptar.Text = "Aceptar";
-                    break;
-                default:
-                    break;
-            }
         }
 
         public override void MapearADatos()
@@ -108,38 +98,50 @@ namespace UI.Desktop
         {
             var esValido = true;
 
-            this.ValidarCampos(esValido);
+            var validaciones = new ValidationException();
 
-            this.ValidarClaves(esValido);
+            this.ValidarCampos(validaciones);
 
-            this.ValidarEmail(esValido);
+            this.ValidarClaves(validaciones);
+
+            this.ValidarEmail(validaciones);
+
+            if (validaciones.Any())
+            {
+                this.Notificar(this.Modo.ToString(), validaciones.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                esValido = false;
+            }
 
             return esValido;
 
         }
 
-        private void ValidarEmail(bool esValido)
+        private void ValidarEmail(ValidationException validaciones)
         {
             if (!this.txtEmail.Text.Contains("@") ||
                 !this.txtEmail.Text.Contains(".com"))
             {
-                esValido = false;
+                validaciones.Add("El formato del Email es incorrecto");
             }
         }
 
-        private void ValidarClaves(bool esValido)
+        private void ValidarClaves(ValidationException validaciones)
         {
             if (!this.txtClave.Text.Equals(this.txtConfirmarClave.Text))
             {
-                esValido = false;
+                validaciones.Add("Las claves no coinciden");
             }
 
         }
 
-        private void ValidarCampos(bool esValido)
+        private void ValidarCampos(ValidationException validaciones)
         {
             if (this.Modo != ModoForm.Alta && string.IsNullOrEmpty(this.txtID.Text))
-                esValido = false;
+            {
+                validaciones.Add("ID de Usuario Incorrecto");
+            }
+               
 
             if (string.IsNullOrEmpty(this.txtNombre.Text) ||
                 string.IsNullOrEmpty(this.txtApellido.Text) ||
@@ -147,7 +149,28 @@ namespace UI.Desktop
                 string.IsNullOrEmpty(this.txtUsuario.Text) ||
                 string.IsNullOrEmpty(this.txtClave.Text))
             {
-                esValido = false;
+                validaciones.Add("Campos vacíos");
+            }
+        }
+
+        private void SetearBoton()
+        {
+            switch (this.Modo)
+            {
+                case ModoForm.Alta:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ModoForm.Modificacion:
+                    this.btnAceptar.Text = "Guardar";
+                    break;
+                case ModoForm.Baja:
+                    this.btnAceptar.Text = "Eliminar";
+                    break;
+                case ModoForm.Consulta:
+                    this.btnAceptar.Text = "Aceptar";
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -156,14 +179,16 @@ namespace UI.Desktop
             if (this.Validar())
             {
                 this.GuardarCambios();
-            }
 
-            this.Close();
+                this.Close();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

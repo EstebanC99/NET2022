@@ -88,6 +88,10 @@
       <Project>{f9d92829-1fb8-401a-8221-adcc01baa9f8}</Project>
       <Name>Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{23A09860-8056-494B-A876-4C0AFD51DFD6}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx" />
